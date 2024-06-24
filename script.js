@@ -31,8 +31,14 @@ document.addEventListener('keyup', handleKeyUp);
 function handleKeyDown(event) {
   if (event.code === 'ArrowLeft') {
     playerX -= playerSpeed;
+    if (playerX < 0) {
+        playerX = 0; // Prevent moving left beyond the canvas
+    }
   } else if (event.code === 'ArrowRight') {
     playerX += playerSpeed;
+    if (playerX + playerWidth > canvas.width) {
+      playerX = canvas.width - playerWidth; // Prevent moving right beyond the canvas
+    }
   }
 }
 
